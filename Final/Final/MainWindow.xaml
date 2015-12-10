@@ -4,8 +4,24 @@
         Title="MainWindow" Height="700" Width="1458.319">
     <Grid>
         <Image Name="map" Margin="-422,-205,-150,-38" Source="mapScaled.png" Stretch="None"/>
-        <Image Name="MainImage" Opacity="0" Margin="-422,-205,-150,-38" Source="blankScaled.png" Stretch="None"/>
-        <Button Name="run" Content="Button" HorizontalAlignment="Left" Margin="1364,10,0,0" VerticalAlignment="Top" Width="76" Click="run_Click"/>
+        <Image Name="MainImage" Opacity="0" Margin="-456,-207,-184,-38" Source="blankScaled.png" Stretch="None"/>
+        <Button Name="run" Content="Run" HorizontalAlignment="Left" Margin="1266,259,0,0" VerticalAlignment="Top" Width="76" Click="run_Click"/>
+        <TextBox x:Name="IRate" HorizontalAlignment="Left" Height="23" Margin="1314,13,0,0" TextWrapping="Wrap" Text=".2" VerticalAlignment="Top" Width="120" />
+        <Label x:Name="label" Content="Infection Rate" HorizontalAlignment="Left" Margin="1202,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="DRate" HorizontalAlignment="Left" Height="23" Margin="1314,41,0,0" TextWrapping="Wrap" Text=".2" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label_Copy" Content="Death Rate" HorizontalAlignment="Left" Margin="1202,38,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="RRate" HorizontalAlignment="Left" Height="23" Margin="1314,69,0,0" TextWrapping="Wrap" Text=".2" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label_Copy1" Content="Recovery Rate" HorizontalAlignment="Left" Margin="1202,68,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="travelRate" HorizontalAlignment="Left" Height="23" Margin="1314,97,0,0" TextWrapping="Wrap" Text=".01" VerticalAlignment="Top" Width="120" />
+        <Label x:Name="label_Copy2" Content="Travel Rate" HorizontalAlignment="Left" Margin="1202,97,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="airTravelRate" HorizontalAlignment="Left" Height="23" Margin="1314,125,0,0" TextWrapping="Wrap" Text=".001" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label_Copy3" Content="Air Travel Rate" HorizontalAlignment="Left" Margin="1202,125,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="startXCoordinate" HorizontalAlignment="Left" Height="23" Margin="1314,153,0,0" VerticalAlignment="Top" Width="120" Text="40"/>
+        <Label x:Name="label_Copy4" Content="Start X Coordinate" HorizontalAlignment="Left" Margin="1202,151,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="startYCoordinate" HorizontalAlignment="Left" Height="23" Margin="1314,181,0,0" VerticalAlignment="Top" Width="120" Text="40"/>
+        <TextBox x:Name="numberOfDays" HorizontalAlignment="Left" Height="22" Margin="1314,209,0,0" VerticalAlignment="Top" Width="120" Text="50"/>
+        <Label x:Name="label_Copyy" Content="Start Y Coordinate" HorizontalAlignment="Left" Margin="1202,178,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_Copydays" Content="Number of Days" HorizontalAlignment="Left" Margin="1202,205,0,0" VerticalAlignment="Top" />
 
     </Grid>
 </Window>

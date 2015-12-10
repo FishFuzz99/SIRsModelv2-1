@@ -34,17 +34,26 @@ namespace WpfApplication1
             InitializeComponent();
             mainImage = this.MainImage;
         }
-        
-        
+        private string iRate;
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+	{
+	    // ... Get control that raised this event.
+	    var textBox = sender as TextBox;
+	    // ... Change Window Title.
+	    this.Title = textBox.Text +
+		"[Length = " + textBox.Text.Length.ToString() + "]";
+	}
+
         private void run_Click(object sender, RoutedEventArgs e)
         {
+            int silly = 1;
             this.MainImage.Opacity = 1;
-
+            dg = new Final.DataGrid(Convert.ToInt16(this.numberOfDays.GetLineText(0)), Convert.ToSingle(this.IRate.GetLineText(0)), Convert.ToSingle(this.DRate.GetLineText(0)), Convert.ToSingle(this.travelRate.GetLineText(0)), Convert.ToSingle(this.airTravelRate.GetLineText(0)));
             System.Windows.Threading.Dispatcher mainImageDispatcher = MainImage.Dispatcher;
             bw = new BackgroundWorker();
             bw.DoWork += delegate (object s, DoWorkEventArgs args)
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < dg.totalT; i++)
                 {
                     BitmapImage bi = Update(); // dg);
                     updateImage update = new updateImage(updateMainImage);
@@ -64,8 +73,8 @@ namespace WpfApplication1
         
         public BitmapImage Update()
         {
-            dg.runTimeStep();
-            long[] array = dg.getArray();
+            dg.runTimeStep(dg);
+            double[] array = dg.getArray();
 
             int width = 1180;
             int height = 500;
@@ -97,35 +106,58 @@ namespace WpfApplication1
                         alpha = 0;
                     }
                     */
-
-                    if (array[i] > 1)
+                    green = 0;
+                    red = 0;
+                    blue = 0;
+                    alpha = 255;
+                    if (array[i] > 0.35)
                     {
-                        green = 255;
-                        red = (int)(r.NextDouble() * 255);
-                        blue = (int)(r.NextDouble() * 255);
+                        red = 255;
+                        blue = 0;
+                        green = 0;
                         alpha = 255;
+                    }
+                    else if (array[i] > 0.2)
+                    {
+                        red = 255;
+                        blue = 0;
+                        green = 51;
+                    }
+                    else if (array[i] > 0.05)
+                    {
+                        red = 255;
+                        blue = 0;
+                        green = 125;
+                    }
+                    else if (array[i] > 0)
+                    {
+                        red = 255;
+                        blue = 0;
+                        green = 255;
                     }
                     else
                     {
-                        red = 255;
-                        green = (int)(r.NextDouble() * 255);
-                        blue = (int)(r.NextDouble() * 255);
+                        red = 0;
+                        green = 0;
+                        blue = 0;
                         alpha = 0;
                     }
 
                     i = smallWidth * y + x;
-                    graph[i] = (uint)((alpha << 24) + (green << 16) + (red << 8) + blue);
+                    graph[i] = (uint)((alpha << 24) + (red << 16) + (green << 8) + blue);
                 }
             }
 
             uint[] pixels = new uint[width * height];
            
             WriteableBitmap bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgra32, null);
+            
             for (int x = 0; x < width; ++x)
             {
                 for (int y = 0; y < height; ++y)
                 {
                     int i = width * y + x;
+                    /*
                     red = (int)(r.NextDouble() * 255);
                     green = (int)(r.NextDouble() * 255);
                     blue = (int)(r.NextDouble() * 255);
@@ -135,11 +167,11 @@ namespace WpfApplication1
                     {
                         alpha = 0;
                     }
-
+                    */
                     pixels[i] = (graph[(int)((int)(y / yscale) * smallWidth + (int)(x / xscale))]);
                 }
             }
-
+            
             bitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * 4, 0, 0);
 
 

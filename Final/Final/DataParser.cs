@@ -9,8 +9,8 @@ namespace Final
 {
     public class DataParser
     {
-        public static int topLattitude = 500;
-        public static int bottomLattitude = 250;
+        public static int topLattitude = 455;
+        public static int bottomLattitude = 205;
         public static int westernLongitude = 550; // actual -1250
         public static int easternLongitude = 1140; // actual -660
         public int width = easternLongitude - westernLongitude;

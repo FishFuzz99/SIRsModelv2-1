@@ -11,3 +11,16 @@ C:\Colten\Physics2300\Final\Final\Final\obj\Debug\Final.exe
 C:\Colten\Physics2300\Final\Final\Final\obj\Debug\Final.pdb
 C:\Colten\Physics2300\Final\Final\Final\obj\Debug\MainWindow.baml
 C:\Colten\Physics2300\Final\Final\Final\obj\Debug\MainWindow.g.cs
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\bin\Debug\Final.exe.config
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.exe
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.pdb
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\bin\Debug\Final.exe
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\bin\Debug\Final.pdb
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.csprojResolveAssemblyReference.cache
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\MainWindow.baml
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\MainWindow.g.cs
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\App.g.cs
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final_MarkupCompile.cache
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.g.resources
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.Properties.Resources.resources
+C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.csproj.GenerateResource.Cache

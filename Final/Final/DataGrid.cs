@@ -9,13 +9,13 @@ namespace Final
     internal class DataGrid
     {
         public static double deltaT { get; set; } = 1;
-        public static double totalT { get; set; } = 100;
+        public double totalT { get; set; }
         public static double sumT = 0;
-        public static float k { get; set; } = .1F; // fraction of infected group that will recover
-        public static float b { get; set; } = .5F;
-        public static float deathRate { get; set; } = .2F;// odds of an infected person dying after leaving the infected group (infectious, really)
-        public static float borderTravelRate = .01F;
-        public static float airportTravelRate = borderTravelRate * .25F;
+        public float k { get; set; }// fraction of infected group that will recover
+        public static float b { get; set; } = 2;
+        public float deathRate { get; set;}// odds of an infected person dying after leaving the infected group (infectious, really)
+        public  float borderTravelRate;
+        public float airportTravelRate;
         public static List<GridUnit> activeGridUnits = new List<GridUnit>();
         public static List<GridUnit> airportGridUnits = new List<GridUnit>();
 
@@ -36,38 +36,49 @@ namespace Final
             parser.parseCSV("input.txt", "output.txt", array, airportGridUnits, activeGridUnits);
         }
 
-        public void runTimeStep()
+        public DataGrid( double totalT, float k, float deathRate, float borderTravelRate, float airportTravelRate)
+        {
+            this.totalT = totalT;
+            this.k = k;
+            this.deathRate = deathRate;
+            this.borderTravelRate = borderTravelRate;
+            this.airportTravelRate = airportTravelRate;
+
+            parser.parseCSV("input.txt", "output.txt", array, airportGridUnits, activeGridUnits);
+        }
+
+        public void runTimeStep(DataGrid dataGrid)
         {
             for (int i = 0; i < activeGridUnits.Count; i++)
             {
-                doIteration(activeGridUnits.ElementAt(i), deltaT);
+                doIteration(activeGridUnits.ElementAt(i), deltaT, dataGrid.k, dataGrid.deathRate);
                 //overWriteGrid(i, temp);
             }
             int current = activeGridUnits.Count;
             //for each grid, call calculateSpreadToNeighbors() on it
             for (int i = 0; i < current; i++)
             {
-                calculateSpreadToNeighbors(activeGridUnits.ElementAt(i), borderTravelRate);
+                calculateSpreadToNeighbors(activeGridUnits.ElementAt(i), borderTravelRate, airportTravelRate);
             }
         }
 
-        public long[] getArray()
+        public double[] getArray()
         {
-            long[] longArray = new long[array.Length];
+            double[] longArray = new double[array.Length];
 
             for (int y = 0; y < gridYLength; y++)
             {
                     for (int x = 0; x < gridXLength; x++)
                 {
                     int i = y * gridXLength + x;
-                    longArray[i] = array[x, y].I + array[x, y].D;
+                    longArray[i] = array[x, y].i;
                 }
                 
             }
             return longArray;
         }
 
-        static void Run()
+        static void Run(DataGrid dataGrid)
         {
 
             // parse the data and fill the array
@@ -84,7 +95,7 @@ namespace Final
             // figure out the beginning GridUnit and add it to activeGridUnits
 
 
-            while (sumT < totalT)
+            while (sumT < dataGrid.totalT)
             {
                 //Console.WriteLine("-----------------------");
                 //for (int i = 0; i < gridXLength; i++)
@@ -107,14 +118,14 @@ namespace Final
 
                 for (int i = 0; i < activeGridUnits.Count; i++)
                 {
-                    doIteration(activeGridUnits.ElementAt(i), deltaT);
+                    doIteration(activeGridUnits.ElementAt(i), deltaT, dataGrid.k, dataGrid.deathRate);
                     //overWriteGrid(i, temp);
                 }
                 int current = activeGridUnits.Count;
                 //for each grid, call calculateSpreadToNeighbors() on it
                 for (int i = 0; i < current; i++)
                 {
-                    calculateSpreadToNeighbors(activeGridUnits.ElementAt(i), borderTravelRate);
+                    calculateSpreadToNeighbors(activeGridUnits.ElementAt(i), dataGrid.borderTravelRate, dataGrid.airportTravelRate);
                 }
 
 
@@ -123,7 +134,7 @@ namespace Final
             
         }
 
-        public static void doIteration(GridUnit grid, double deltaT)
+        public static void doIteration(GridUnit grid, double deltaT, float k, float deathRate)
         {
 
             /*
@@ -165,7 +176,7 @@ namespace Final
             }
         }
 
-        public static void calculateSpreadToNeighbors(GridUnit centerGrid, float borderTravelRate) // spreads infection out, one way, from each infected grid
+        public static void calculateSpreadToNeighbors(GridUnit centerGrid, float borderTravelRate, float airportTravelRate) // spreads infection out, one way, from each infected grid
         {
 
 
