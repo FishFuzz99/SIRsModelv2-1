@@ -1,0 +1,12 @@
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\bin\Release\Final.exe.config
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\bin\Release\Final.exe
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\bin\Release\Final.pdb
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\MainWindow.baml
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\MainWindow.g.cs
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\App.g.cs
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\Final_MarkupCompile.cache
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\Final.g.resources
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\Final.Properties.Resources.resources
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\Final.csproj.GenerateResource.Cache
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\Final.exe
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Release\Final.pdb

@@ -24,3 +24,16 @@ C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other
 C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.g.resources
 C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.Properties.Resources.resources
 C:\Users\Bryson\Desktop\School Work\Fall 2015\Phys 2300 Computational Phys\Other Final\SIRsModel\Final\Final\obj\Debug\Final.csproj.GenerateResource.Cache
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\bin\Debug\Final.exe.config
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\Final.exe
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\Final.pdb
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\bin\Debug\Final.exe
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\bin\Debug\Final.pdb
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\Final.csprojResolveAssemblyReference.cache
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\MainWindow.baml
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\MainWindow.g.cs
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\App.g.cs
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\Final_MarkupCompile.cache
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\Final.g.resources
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\Final.Properties.Resources.resources
+C:\Colten\Physics2300\FinalFinal\SirsModelv2\Final\Final\obj\Debug\Final.csproj.GenerateResource.Cache

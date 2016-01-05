@@ -12,12 +12,13 @@ namespace Final
         public double totalT { get; set; }
         public static double sumT = 0;
         public float k { get; set; }// fraction of infected group that will recover
-        public static float b { get; set; } = 2;
+        public float b { get; set; }
         public float deathRate { get; set;}// odds of an infected person dying after leaving the infected group (infectious, really)
         public  float borderTravelRate;
         public float airportTravelRate;
         public static List<GridUnit> activeGridUnits = new List<GridUnit>();
         public static List<GridUnit> airportGridUnits = new List<GridUnit>();
+        public string startingCity = "Los Angeles";
 
 
         public static DataParser parser = new DataParser();
@@ -33,32 +34,64 @@ namespace Final
 
         public DataGrid()
         {
-            parser.parseCSV("input.txt", "output.txt", array, airportGridUnits, activeGridUnits);
+            
+        }
+        
+        public long getTotalInfected()
+        {
+            return totalInfected;
+        }
+        public long getTotalDead()
+        {
+            return totalDead;
+        }
+        public long getTotalRecovered()
+        {
+            return totalRecovered;
         }
 
-        public DataGrid( double totalT, float k, float deathRate, float borderTravelRate, float airportTravelRate)
+        public DataGrid( double totalT, float k, float deathRate, float borderTravelRate, float airportTravelRate, string startingCity, float b)
         {
+            this.b = b;
             this.totalT = totalT;
             this.k = k;
             this.deathRate = deathRate;
             this.borderTravelRate = borderTravelRate;
             this.airportTravelRate = airportTravelRate;
+            this.startingCity = startingCity;
+
+            
+            //activeGridUnits.ElementAt(0).i = .01;
 
             parser.parseCSV("input.txt", "output.txt", array, airportGridUnits, activeGridUnits);
+            if (startingCity == "New York")
+            {
+                activeGridUnits.Add(array[511, 153]);
+            }
+            else if (startingCity == "Los Angeles")
+            {
+                activeGridUnits.Add(array[67, 85]);
+            }
+            else if (startingCity == "Chicago")
+            {
+                activeGridUnits.Add(array[373, 164]);
+            }
+
+            activeGridUnits.ElementAt(0).i = .05;
         }
 
-        public void runTimeStep(DataGrid dataGrid)
+        public void runTimeStep()//DataGrid dataGrid)
         {
             for (int i = 0; i < activeGridUnits.Count; i++)
             {
-                doIteration(activeGridUnits.ElementAt(i), deltaT, dataGrid.k, dataGrid.deathRate);
+                doIteration(activeGridUnits.ElementAt(i), deltaT, this.k, this.deathRate, this.b);
                 //overWriteGrid(i, temp);
             }
             int current = activeGridUnits.Count;
             //for each grid, call calculateSpreadToNeighbors() on it
             for (int i = 0; i < current; i++)
             {
-                calculateSpreadToNeighbors(activeGridUnits.ElementAt(i), borderTravelRate, airportTravelRate);
+                calculateSpreadToNeighbors(activeGridUnits.ElementAt(i), this.borderTravelRate, this.airportTravelRate);
             }
         }
 
@@ -118,7 +151,7 @@ namespace Final
 
                 for (int i = 0; i < activeGridUnits.Count; i++)
                 {
-                    doIteration(activeGridUnits.ElementAt(i), deltaT, dataGrid.k, dataGrid.deathRate);
+                    doIteration(activeGridUnits.ElementAt(i), deltaT, dataGrid.k, dataGrid.deathRate, dataGrid.b);
                     //overWriteGrid(i, temp);
                 }
                 int current = activeGridUnits.Count;
@@ -134,7 +167,7 @@ namespace Final
             
         }
 
-        public static void doIteration(GridUnit grid, double deltaT, float k, float deathRate)
+        public static void doIteration(GridUnit grid, double deltaT, float k, float deathRate , float b)
         {
 
             /*
@@ -163,7 +196,7 @@ namespace Final
             totalInfected += Convert.ToInt64(iPrime * grid.N);
             grid.r += (rPrime * deltaT);
             totalRecovered += Convert.ToInt64(rPrime * grid.N);
-
+            
             // calculate losses
             long theDead = Convert.ToInt64(rPrime * grid.N * deltaT * deathRate);
             grid.D += theDead;
@@ -204,7 +237,7 @@ namespace Final
                     centerGrid.r -= Convert.ToSingle(recoveredOut) / centerGrid.N;
                     centerGrid.s -= Convert.ToSingle(susceptableOut) / centerGrid.N;
 
-                    if (target.I > 0 && (!activeGridUnits.Contains(target)))
+                    if (target.i > 0 && (!activeGridUnits.Contains(target)))
                     {
                         activeGridUnits.Add(target);
                     }
@@ -226,7 +259,7 @@ namespace Final
                     centerGrid.r -= Convert.ToSingle(recoveredOut) / centerGrid.N;
                     centerGrid.s -= Convert.ToSingle(susceptableOut) / centerGrid.N;
 
-                    if (target.I > 0 && (!activeGridUnits.Contains(target)))
+                    if (target.i > 0 && (!activeGridUnits.Contains(target)))
                     {
                         activeGridUnits.Add(target);
                     }
@@ -248,7 +281,7 @@ namespace Final
                     centerGrid.r -= Convert.ToSingle(recoveredOut) / centerGrid.N;
                     centerGrid.s -= Convert.ToSingle(susceptableOut) / centerGrid.N;
 
-                    if (target.I > 0 && (!activeGridUnits.Contains(target)))
+                    if (target.i > 0 && (!activeGridUnits.Contains(target)))
                     {
                         activeGridUnits.Add(target);
                     }
@@ -270,7 +303,7 @@ namespace Final
                     centerGrid.r -= Convert.ToSingle(recoveredOut) / centerGrid.N;
                     centerGrid.s -= Convert.ToSingle(susceptableOut) / centerGrid.N;
 
-                    if (target.I > 0 && (!activeGridUnits.Contains(target)))
+                    if (target.i > 0 && (!activeGridUnits.Contains(target)))
                     {
                         activeGridUnits.Add(target);
                     }
@@ -287,7 +320,7 @@ namespace Final
                         otherAirport.r += Convert.ToSingle(recoveredOut * airportTravelRate) / otherAirport.N;
                         otherAirport.s += Convert.ToSingle(susceptableOut * airportTravelRate) / otherAirport.N;
 
-                        if (otherAirport.I > 0 && (!activeGridUnits.Contains(otherAirport)))
+                        if (otherAirport.i > 0 && (!activeGridUnits.Contains(otherAirport)))
                         {
                             activeGridUnits.Add(otherAirport);
                         }

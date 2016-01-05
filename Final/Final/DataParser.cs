@@ -55,12 +55,12 @@ namespace Final
                                 if (lineArr[i] != "99999.0" && lineArr[i] != "1.0369266")
                                 {
                                     array[i - westernLongitude, lineCounter - bottomLattitude - 1] = new GridUnit(Convert.ToInt64(Convert.ToSingle(lineArr[i]) * 100), 0, 0, Convert.ToInt64(Convert.ToSingle(lineArr[i]) * 100), i - westernLongitude, lineCounter - bottomLattitude - 1);
-                                    if (array[i - westernLongitude, lineCounter - bottomLattitude - 1].N > 100000)
+                                    if (array[i - westernLongitude, lineCounter - bottomLattitude - 1].N > 300000)
                                     {
                                         if (oneAdded)
                                         {
-                                            activeGridUnits.Add(array[i - westernLongitude, lineCounter - bottomLattitude - 1]);
-                                            activeGridUnits.ElementAt(0).i = .1;
+                                            //activeGridUnits.Add(array[i - westernLongitude, lineCounter - bottomLattitude - 1]);
+                                            //activeGridUnits.ElementAt(0).i = .01;
                                             oneAdded = false;
                                         }
                                         airportGridUnits.Add(array[i - westernLongitude, lineCounter - bottomLattitude - 1]);
